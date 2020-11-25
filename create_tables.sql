@@ -25,8 +25,8 @@ CREATE TABLE Bio_Reactions (
             reaction		      varchar2(32) NOT NULL check(body_type in ( 'Like', 'Dislike' )),
 
 PRIMARY KEY (bio_reaction_id),
-FOREIGN KEY giving_user_id     REFERENCES User(user_id),
-	FOREIGN KEY receiving_user_id  REFERENCES User(user_id),
+FOREIGN KEY giving_user_id     REFERENCES Users(user_id),
+	FOREIGN KEY receiving_user_id  REFERENCES Users(user_id),
 );
 
 
@@ -34,12 +34,12 @@ CREATE TABLE Prompt_Reactions (
 	  prompt_reaction_id 	number(10) 	  UNIQUE,
   giving_user_id	  	number(10),
   receiving_user_id	  number(10),
-  prompt1_reaction  	varchar2(32) 	NOT NULL check(body_type in ( ‘Like’, ‘Dislike’ )),
-  prompt2_reaction	  varchar2(32) 	NOT NULL check(body_type in ( ‘Like’, ‘Dislike’ )),
+  prompt1_reaction  	varchar2(32) 	NOT NULL check(body_type in ( 'Like', 'Dislike' )),
+  prompt2_reaction	  varchar2(32) 	NOT NULL check(body_type in ( 'Like', 'Dislike' )),
 
   PRIMARY KEY(bio_reaction_id),
   FOREIGN KEY giving_user_id REFERENCES User(user_id),
-	FOREIGN KEY receiving_user_id REFERENCES User(user_id),
+	FOREIGN KEY receiving_user_id REFERENCES Users(user_id),
 );
 
 
