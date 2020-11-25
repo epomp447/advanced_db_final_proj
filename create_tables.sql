@@ -22,7 +22,7 @@ CREATE TABLE Bio_Reactions (
 	bio_reaction_id 	number(10) 	 UNIQUE,
             giving_user_id		number(10),
             receiving_user_id	number(10),
-            reaction		      varchar2(32) NOT NULL check(body_type in ( ‘Like’, ‘Dislike’ )),
+            reaction		      varchar2(32) NOT NULL check(body_type in ( 'Like', 'Dislike' )),
 
 PRIMARY KEY (bio_reaction_id),
 FOREIGN KEY giving_user_id     REFERENCES User(user_id),
