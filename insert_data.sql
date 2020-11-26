@@ -4,6 +4,7 @@ INSERT INTO Users VALUES(1011152023,'Paul', 'S', 23,'Male','Flourtown','test6799
 INSERT INTO Users VALUES(1011152024,'Theo', 'Von', 23,'Male','Cherry Hill','qualityassured@gmail.com','Passw0rd');
 INSERT INTO Users VALUES(1011152025,'Jay', null, 22,'Male','Wynnewood','testUser112@gmail.com','Aa123456');
 
+INSERT INTO Users VALUES(101010, 'Jenna', 'Penn', 26, 'Female', 'Blue Bell', 'email1@yahoo.com', 'Pwdpwdpwd');
 INSERT INTO Users VALUES(101011, 'Kelly', 'Rang', 27, 'Female', 'Pheonixville', 'email2@yahoo.com', 'Pwdpwdpwd!');
 INSERT INTO Users VALUES(101012, 'Kylie', 'Jay', 28, 'Female', 'Norristown', 'email3@yahoo.com', 'Pwdpwdpwd!!');
 INSERT INTO Users VALUES(101013, 'Jess', 'Kenn', 26, 'Female', 'Collegeville', 'email4@yahoo.com', 'Pwdpwdpwd1');
