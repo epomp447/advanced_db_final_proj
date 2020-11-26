@@ -62,12 +62,12 @@ CREATE TABLE Prompts (
 );
 							
 CREATE TABLE Prompt_Reactions (
-	prompt_reaction_id 	number(10) 	UNIQUE,
+	prompt_reaction_id 	number(10),
  	giving_user_id	  	number(10),
   	receiving_user_id	number(10),
-  	prompt1_reaction  	varchar2(32) 	NOT NULL CHECK(body_type in ( 'Like', 'Dislike' )),
-  	prompt2_reaction	varchar2(32) 	NOT NULL CHECK(body_type in ( 'Like', 'Dislike' )),
-	PRIMARY KEY (bio_reaction_id),
+  	prompt1_reaction  	varchar2(32) 	NOT NULL CHECK(prompt1_reaction in ( 'Like', 'Dislike' )),
+  	prompt2_reaction	varchar2(32) 	NOT NULL CHECK(prompt2_reaction in ( 'Like', 'Dislike' )),
+	PRIMARY KEY (prompt_reaction_id),
   	FOREIGN KEY (giving_user_id) 	REFERENCES Users(user_id),
 	FOREIGN KEY (receiving_user_id) REFERENCES Users(user_id)
 );
