@@ -4,6 +4,11 @@ INSERT INTO Users VALUES(1011152023,'Paul', 'S', 23,'Male','Flourtown','test6799
 INSERT INTO Users VALUES(1011152024,'Theo', 'Von', 23,'Male','Cherry Hill','qualityassured@gmail.com','Passw0rd');
 INSERT INTO Users VALUES(1011152025,'Jay', null, 22,'Male','Wynnewood','testUser112@gmail.com','Aa123456');
 
+INSERT INTO Users VALUES(101011, 'Kelly', 'Rang', 27, 'Female', 'Pheonixville', 'email2@yahoo.com', 'Pwdpwdpwd!');
+INSERT INTO Users VALUES(101012, 'Kylie', 'Jay', 28, 'Female', 'Norristown', 'email3@yahoo.com', 'Pwdpwdpwd!!');
+INSERT INTO Users VALUES(101013, 'Jess', 'Kenn', 26, 'Female', 'Collegeville', 'email4@yahoo.com', 'Pwdpwdpwd1');
+INSERT INTO Users VALUES(101014, 'Lexi', 'Green', 29, 'Female', 'Worchester', 'email5@yahoo.com', 'Pwdpwdpwd2');
+
 INSERT INTO Biography VALUES(2000,1011152021,'being silly. having ridiculous amonts of fun wherever. being a smart ass. ohh and i can cook. ;)', 'funny');
 INSERT INTO Biography VALUES(2001,1011152022,'full-time student, full-time square. i change from year to year. on the weekends i like to sit and home and prepare for the week ahead.','funny');
 INSERT INTO Biography VALUES(2002,1011152023,'im a free culture nerd. i travel, talk, and teach.','informative');
@@ -27,13 +32,6 @@ INSERT INTO Prompt_Reactions VALUES(1124,1011152022, 101012,'Dislike','Like');
 INSERT INTO Prompt_Reactions VALUES(1125,1011152023, 101012,'Like','Like');
 INSERT INTO Prompt_Reactions VALUES(1126,1011152024, 101013,'Like','Like');
 INSERT INTO Prompt_Reactions VALUES(1127,1011152025, 101012,'Like','Like');
-
-
- 
-INSERT INTO Users VALUES(101011, 'Kelly', 'Rang', 27, 'Female', 'Pheonixville', 'email2@yahoo.com', 'Pwdpwdpwd!');
-INSERT INTO Users VALUES(101012, 'Kylie', 'Jay', 28, 'Female', 'Norristown', 'email3@yahoo.com', 'Pwdpwdpwd!!');
-INSERT INTO Users VALUES(101013, 'Jess', 'Kenn', 26, 'Female', 'Collegeville', 'email4@yahoo.com', 'Pwdpwdpwd1');
-INSERT INTO Users VALUES(101014, 'Lexi', 'Green', 29, 'Female', 'Worchester', 'email5@yahoo.com', 'Pwdpwdpwd2');
 
 INSERT INTO Biography VALUES(7777, 101010, 'Hi, I love to go shopping and spend time with my friends! My favorite season is summer and have 2 cats!', 'honest');
 INSERT INTO Biography VALUES(8888, 101011, 'Hello!! My favorite hobbies are swimming and hiking! I have a German Shepard and we love the moutains!', 'silly');
