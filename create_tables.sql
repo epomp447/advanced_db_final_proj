@@ -69,6 +69,6 @@ CREATE TABLE Prompt_Reactions (
   	prompt2_reaction	varchar2(32) 	NOT NULL CHECK(body_type in ( 'Like', 'Dislike' )),
 	PRIMARY KEY (bio_reaction_id),
   	FOREIGN KEY (giving_user_id) 	REFERENCES Users(user_id),
-	FOREIGN KEY (receiving_user_id) REFERENCES Users(user_id),
+	FOREIGN KEY (receiving_user_id) REFERENCES Users(user_id)
 );
 							       
