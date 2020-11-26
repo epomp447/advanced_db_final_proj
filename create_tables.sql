@@ -20,13 +20,13 @@ CREATE TABLE Biography (
 );
 
 CREATE TABLE Bio_Reactions (
-	bio_reaction_id 	number(10)   UNIQUE,
+	bio_reaction_id 	number(10),
         giving_user_id		number(10),
         receiving_user_id	number(10),
-        reaction		varchar2(32) NOT NULL CHECK(body_type in ( 'Like', 'Dislike' )),
+        reaction		varchar2(32) NOT NULL CHECK(reaction in ( 'Like', 'Dislike' )),
 	PRIMARY KEY (bio_reaction_id),
 	FOREIGN KEY (giving_user_id)     REFERENCES Users(user_id),
-	FOREIGN KEY (receiving_user_id)  REFERENCES Users(user_id),
+	FOREIGN KEY (receiving_user_id)  REFERENCES Users(user_id)
 );
 
 CREATE TABLE Prompts (
