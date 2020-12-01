@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 $username = "C##admin";
-$password = "4041";
+$password = "Thwnd2021!";
 $database = "localhost/XE";
 
 $query = "SELECT u.FIRST_NAME, u.LOCATION, u.AGE, b.TEXT_BODY, r.RESPONSE_1, r.RESPONSE_2 FROM USERS u, biography b, prompts r WHERE u.user_id=b.user_id AND u.user_id=r.user_id";
@@ -38,7 +38,6 @@ if (!$r) {
     <title>Love Brew</title>
   </head>
   <body>
-
     <nav class="navbar navbar-expand-lg navbar-light">
         <img src="img/cup.png" class="logo" alt="Love Brew" width=50 height=50>
         <a class="navbar-brand" href="index.html"><strong>Love Brew</strong></a>
@@ -77,25 +76,36 @@ if (!$r) {
           </ul>
         </div><hr>
       </nav>
-
-      <h2 class = "title">Love Brew: A Smarter Way To Online Date</h2>
-
-
-	 <?php
-	 while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-    echo "<div class=card>";
-	echo "<h3>Biography</h3>";
-	echo "<div class=card-body>";
-	echo "<h5 class=card-title>". $row["FIRST_NAME"] ."</h5>";
-	echo "<h6 class=card-subtitle mb-2 text-muted>". $row["AGE"] .", ". $row["LOCATION"] ."</h6><br>";
-    echo "<p class=card-text><b>What is your ideal Saturday?</b><br>". $row["RESPONSE_1"] ."</p>";
-	echo "<p class=card-text><b>My favorite qualities in a person is…</b><br>". $row["RESPONSE_2"] ."</p>";
-	echo " <a href='#' class=card-link>Like</a>";
-	echo " <a href='#' class=card-link>Dislike</a>";
-	echo "</div>\n";
-	echo "</div>\n";
-	}
-	?>
-	</table>
-  </body>
+   <h2 class = "title">Love Brew: A Smarter Way To Online Date</h2>
+<?php
+   while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+     echo "<div class=row>";
+       echo "<div class=col-sm-6>";
+         echo "<div class=card>";
+          echo "<div class=card-header>Biography</div>";
+           echo "<div class=card-body>";
+               echo "<h5 class=card-title>". $row["FIRST_NAME"] ."</h5>";
+               echo "<h6 class=card-subtitle mb-2 text-muted>". $row["AGE"] .", ". $row["LOCATION"] ."</h6><br>";
+             echo "<p class=card-text><b>About me</b><br>". $row["TEXT_BODY"] ."</p>";
+             echo "<button type=button class=btn-dark>Like </button>" . "\t";
+             echo "<button type=button class=btn-dark>Disike </button><br>";
+           echo "</div>\n";
+        echo "</div>\n";
+       echo "</div>\n";
+       echo "<div class=col-sm-6>";
+         echo "<div class=card>";
+           echo "<div class=card-header>Question Responses</div>";
+           echo "<div class=card-body>";
+             echo "<p class=card-text><b>What is your ideal Saturday?</b><br>". $row["RESPONSE_1"] ."</p>";
+             echo "<p class=card-text><b>My favorite qualities in a person is…</b><br>". $row["RESPONSE_2"] ."</p>";
+             echo "<button type=button class=btn-dark>Like </button>" . "\t";
+             echo "<button type=button class=btn-dark>Disike </button><br>";
+           echo "</div>\n";
+         echo "</div>\n";
+        echo "</div>\n";
+     echo "</div>\n";
+     echo "<hr>\n";
+   }
+?>
+   </body>
 </html>
