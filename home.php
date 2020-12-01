@@ -7,7 +7,7 @@ $username = "C##admin";
 $password = "4041";         
 $database = "localhost/XE";  
  
-$query = "SELECT u.FIRST_NAME, u.AGE, b.TEXT_BODY FROM USERS u, biography b WHERE u.user_id=b.user_id";
+$query = "SELECT u.FIRST_NAME, u.AGE, b.TEXT_BODY, r.RESPONSE_1, r.RESPONSE_2 FROM USERS u, biography b, prompts r WHERE u.user_id=b.user_id AND u.user_id=r.user_id";
  
 $c = oci_connect($username, $password, $database);
 if (!$c) {
@@ -66,6 +66,8 @@ if (!$r) {
 	 <th><b>Name</b></th>
 	 <th><b>Age</b></th>
 	 <th><b>Bio</b></th>
+	 <th><b>What is your ideal Saturday?</b></th>
+	 <th><b>My favorite qualities in a person is…</b></th>
 	 </tr>
 	 <?php 
 	 while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {  
@@ -73,6 +75,8 @@ if (!$r) {
     echo "<td>". $row["FIRST_NAME"] . "</td>\n";
 	echo "<td>". $row["AGE"] . "</td>\n";
 	echo "<td>". $row["TEXT_BODY"] . "</td>\n";
+	echo "<td>". $row["RESPONSE_1"] . "</td>\n";
+	echo "<td>". $row["RESPONSE_2"] . "</td>\n";
     echo "</tr>\n";
 	}
 	?>
