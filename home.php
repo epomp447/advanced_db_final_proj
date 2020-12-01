@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 $username = "C##admin";
-$password = "Thwnd2021!";
+$password = "4041";
 $database = "localhost/XE";
 
 $query = "SELECT u.FIRST_NAME, u.LOCATION, u.AGE, b.TEXT_BODY, r.RESPONSE_1, r.RESPONSE_2 FROM USERS u, biography b, prompts r WHERE u.user_id=b.user_id AND u.user_id=r.user_id";
