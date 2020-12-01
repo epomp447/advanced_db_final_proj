@@ -1,20 +1,20 @@
 <?php
- 
+
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
- 
-$username = "C##admin";             
-$password = "4041";         
-$database = "localhost/XE";  
- 
+
+$username = "C##admin";
+$password = "4041";
+$database = "localhost/XE";
+
 $query = "SELECT u.FIRST_NAME, u.AGE, b.TEXT_BODY, r.RESPONSE_1, r.RESPONSE_2 FROM USERS u, biography b, prompts r WHERE u.user_id=b.user_id AND u.user_id=r.user_id";
- 
+
 $c = oci_connect($username, $password, $database);
 if (!$c) {
     $m = oci_error();
     trigger_error('Could not connect to database: '. $m['message'], E_USER_ERROR);
 }
- 
+
 $s = oci_parse($c, $query);
 if (!$s) {
     $m = oci_error($c);
@@ -25,7 +25,7 @@ if (!$r) {
     $m = oci_error($s);
     trigger_error('Could not execute statement: '. $m['message'], E_USER_ERROR);
 }
- 
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -38,7 +38,7 @@ if (!$r) {
     <title>Love Brew</title>
   </head>
   <body>
-  
+
     <nav class="navbar navbar-expand-lg navbar-light">
         <img src="img/cup.png" class="logo" alt="Love Brew" width=50 height=50>
         <a class="navbar-brand" href="index.html"><strong>Love Brew</strong></a>
@@ -57,20 +57,51 @@ if (!$r) {
               <a class="nav-link" href="documentation.html">Documentation</a>
             </li>
           </ul>
+          <ul class="navbar-nav ml-auto">
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                My Account
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li class="nav-item">
+                  <a class="nav-link" href="login.php">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="logout.php">Logout</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="admin.php">Admin</a>
+                </li>
+              </div>
+            </div>
+          </ul>
         </div><hr>
       </nav>
 
       <h2 class = "title">Love Brew: A Smarter Way To Online Date</h2>
-     <table border='1' class='center'>
-	 <tr>
-	 <th><b>Name</b></th>
-	 <th><b>Age</b></th>
-	 <th><b>Bio</b></th>
-	 <th><b>What is your ideal Saturday?</b></th>
-	 <th><b>My favorite qualities in a person is…</b></th>
-	 </tr>
-	 <?php 
-	 while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {  
+
+      <div class="card" style="width: 18rem;">
+        <h3>Biography</h3>
+        <div class="card-body">
+          <h5 class="card-title">Name here</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Age, Location</h6><br>
+          <p class="card-text"><b>What is your ideal Saturday?</b><br>Response</p>
+          <p class="card-text"><b>My favorite qualities in a person is…</b><br>Response</p>
+          <a href="#" class="card-link">Like</a>
+          <a href="#" class="card-link">Dislike</a>
+        </div>
+      </div>
+
+      <table border='1' class='center'>
+    	 <tr>
+    	 <th><b>Name</b></th>
+    	 <th><b>Age</b></th>
+    	 <th><b>Bio</b></th>
+    	 <th><b>What is your ideal Saturday?</b></th>
+    	 <th><b>My favorite qualities in a person is…</b></th>
+    	 </tr>
+	 <?php
+	 while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
     echo "<tr>\n";
     echo "<td>". $row["FIRST_NAME"] . "</td>\n";
 	echo "<td>". $row["AGE"] . "</td>\n";
