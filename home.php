@@ -1,3 +1,32 @@
+<?php
+ 
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
+ 
+$username = "C##admin";             
+$password = "4041";         
+$database = "localhost/XE";  
+ 
+$query = "SELECT u.FIRST_NAME, u.AGE, b.TEXT_BODY FROM USERS u, biography b WHERE u.user_id=b.user_id";
+ 
+$c = oci_connect($username, $password, $database);
+if (!$c) {
+    $m = oci_error();
+    trigger_error('Could not connect to database: '. $m['message'], E_USER_ERROR);
+}
+ 
+$s = oci_parse($c, $query);
+if (!$s) {
+    $m = oci_error($c);
+    trigger_error('Could not parse statement: '. $m['message'], E_USER_ERROR);
+}
+$r = oci_execute($s);
+if (!$r) {
+    $m = oci_error($s);
+    trigger_error('Could not execute statement: '. $m['message'], E_USER_ERROR);
+}
+ 
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -9,7 +38,8 @@
     <title>Love Brew</title>
   </head>
   <body>
-     <nav class="navbar navbar-expand-lg navbar-light">
+  
+    <nav class="navbar navbar-expand-lg navbar-light">
         <img src="img/cup.png" class="logo" alt="Love Brew" width=50 height=50>
         <a class="navbar-brand" href="index.html"><strong>Love Brew</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,13 +61,21 @@
       </nav>
 
       <h2 class = "title">Love Brew: A Smarter Way To Online Date</h2>
-      <div class="intro">
-          <p>The online dating market has grown to be a billion dollar industry that is projected to continue seeing expansion over the next decade. With such a saturated market, there are an influx of platforms from which users can choose.  As the market has millions of users, there is a high level of competition to set yourself apart and stand out. <br><br>
-          Given that online dating relies heavily on making a good first impression through one’s profile, there is considerable pressure on creating a unique profile that will capture the most user engagement and generate the highest response volume. This leaves the user at a crossroads with how he/she wants to take their approach. Should I be funny, lighthearted, serious, honest? What if people won’t like my answers?  This is a common predicament that most people face when creating their profiles and with a lack of specific feedback, there is no help to point users in the right direction on how to improve. </p>
-          <p><br><strong>Our Product</strong><br>
-          With our application, online dating users will now be able to receive feedback on their profile to gain insight on their performance and gauge how their responses appeal to the platform’s users.</p> <br><hr>
-          <div class="intro-links"><a href="http://localhost/advanced_db_final_proj-main/home.php" target="_blank">User Data</a>
-          </div>
-      </div>
+     <table border='1' class='center'>
+	 <tr>
+	 <th><b>Name</b></th>
+	 <th><b>Age</b></th>
+	 <th><b>Bio</b></th>
+	 </tr>
+	 <?php 
+	 while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {  
+    echo "<tr>\n";
+    echo "<td>". $row["FIRST_NAME"] . "</td>\n";
+	echo "<td>". $row["AGE"] . "</td>\n";
+	echo "<td>". $row["TEXT_BODY"] . "</td>\n";
+    echo "</tr>\n";
+	}
+	?>
+	</table>
   </body>
 </html>
