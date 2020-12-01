@@ -7,7 +7,7 @@ $username = "C##admin";
 $password = "4041";
 $database = "localhost/XE";
 
-$query = "SELECT u.FIRST_NAME, u.AGE, b.TEXT_BODY, r.RESPONSE_1, r.RESPONSE_2 FROM USERS u, biography b, prompts r WHERE u.user_id=b.user_id AND u.user_id=r.user_id";
+$query = "SELECT u.FIRST_NAME, u.LOCATION, u.AGE, b.TEXT_BODY, r.RESPONSE_1, r.RESPONSE_2 FROM USERS u, biography b, prompts r WHERE u.user_id=b.user_id AND u.user_id=r.user_id";
 
 $c = oci_connect($username, $password, $database);
 if (!$c) {
@@ -80,35 +80,20 @@ if (!$r) {
 
       <h2 class = "title">Love Brew: A Smarter Way To Online Date</h2>
 
-      <div class="card" style="width: 18rem;">
-        <h3>Biography</h3>
-        <div class="card-body">
-          <h5 class="card-title">Name here</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Age, Location</h6><br>
-          <p class="card-text"><b>What is your ideal Saturday?</b><br>Response</p>
-          <p class="card-text"><b>My favorite qualities in a person is…</b><br>Response</p>
-          <a href="#" class="card-link">Like</a>
-          <a href="#" class="card-link">Dislike</a>
-        </div>
-      </div>
 
-      <table border='1' class='center'>
-    	 <tr>
-    	 <th><b>Name</b></th>
-    	 <th><b>Age</b></th>
-    	 <th><b>Bio</b></th>
-    	 <th><b>What is your ideal Saturday?</b></th>
-    	 <th><b>My favorite qualities in a person is…</b></th>
-    	 </tr>
 	 <?php
 	 while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-    echo "<tr>\n";
-    echo "<td>". $row["FIRST_NAME"] . "</td>\n";
-	echo "<td>". $row["AGE"] . "</td>\n";
-	echo "<td>". $row["TEXT_BODY"] . "</td>\n";
-	echo "<td>". $row["RESPONSE_1"] . "</td>\n";
-	echo "<td>". $row["RESPONSE_2"] . "</td>\n";
-    echo "</tr>\n";
+    echo "<div class=card>";
+	echo "<h3>Biography</h3>";
+	echo "<div class=card-body>";
+	echo "<h5 class=card-title>". $row["FIRST_NAME"] ."</h5>";
+	echo "<h6 class=card-subtitle mb-2 text-muted>". $row["AGE"] .", ". $row["LOCATION"] ."</h6><br>";
+    echo "<p class=card-text><b>What is your ideal Saturday?</b><br>". $row["RESPONSE_1"] ."</p>";
+	echo "<p class=card-text><b>My favorite qualities in a person is…</b><br>". $row["RESPONSE_2"] ."</p>";
+	echo " <a href='#' class=card-link>Like</a>";
+	echo " <a href='#' class=card-link>Dislike</a>";
+	echo "</div>\n";
+	echo "</div>\n";
 	}
 	?>
 	</table>
