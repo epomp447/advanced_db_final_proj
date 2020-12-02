@@ -1,3 +1,11 @@
+<!-- Lauren Bello, Evan Pomponio
+     CSC 370 
+     December 2, 2020
+     User's profile data, biography and question responses are displayed in 
+     two cards where the viewing user is able to react to the content via selecting 
+     the Like or Dislike button.
+-->
+
 <?php
 
 error_reporting(E_ALL);
