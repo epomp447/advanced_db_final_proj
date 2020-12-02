@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 $username = "C##admin";
-$password = "4041";
+$password = "Thwnd2021!";
 $database = "localhost/XE";
 
 $query = "SELECT u.FIRST_NAME, u.LOCATION, u.AGE, b.TEXT_BODY, r.RESPONSE_1, r.RESPONSE_2 FROM USERS u, biography b, prompts r WHERE u.user_id=b.user_id AND u.user_id=r.user_id";
@@ -39,53 +39,53 @@ if (!$r) {
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <img src="img/cup.png" class="logo" alt="Love Brew" width=50 height=50>
-        <a class="navbar-brand" href="index.html"><strong>Love Brew</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-           <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="documentation.html">Documentation</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <div class="dropdown">
-              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                My Account
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li class="nav-item">
-                  <a class="nav-link" href="login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="logout.php">Logout</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="admin.php">Admin</a>
-                </li>
-              </div>
-            </div>
-          </ul>
-        </div><hr>
-      </nav>
+       <img src="img/cup.png" class="logo" alt="Love Brew" width=50 height=50>
+       <a class="navbar-brand" href="index.html"><strong>Love Brew</strong></a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="navbar-nav">
+           <li class="nav-item active">
+             <a class="nav-link" href="home.php">Home</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="ODM_data.php">Data</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="documentation.html" target="_blank">Documentation</a>
+           </li>
+         </ul>
+         <ul class="navbar-nav ml-auto">
+           <div class="dropdown">
+             <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               My Account
+             </button>
+             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+               <li class="nav-item">
+                 <a class="nav-link" href="login.php">Login</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="logout.php">Logout</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="admin.php">Admin</a>
+               </li>
+             </div>
+           </div>
+         </ul>
+       </div><hr>
+     </nav>
    <h2 class = "title">Love Brew: A Smarter Way To Online Date</h2>
-<?php
-   while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+	 <?php
+	 while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
      echo "<div class=row>";
        echo "<div class=col-sm-6>";
          echo "<div class=card>";
           echo "<div class=card-header>Biography</div>";
            echo "<div class=card-body>";
-               echo "<h5 class=card-title>". $row["FIRST_NAME"] ."</h5>";
-               echo "<h6 class=card-subtitle mb-2 text-muted>". $row["AGE"] .", ". $row["LOCATION"] ."</h6><br>";
+          	 echo "<h5 class=card-title>". $row["FIRST_NAME"] ."</h5>";
+          	 echo "<h6 class=card-subtitle mb-2 text-muted>". $row["AGE"] .", ". $row["LOCATION"] ."</h6><br>";
              echo "<p class=card-text><b>About me</b><br>". $row["TEXT_BODY"] ."</p>";
              echo "<button type=button class=btn-dark>Like </button>" . "\t";
              echo "<button type=button class=btn-dark>Disike </button><br>";
@@ -105,7 +105,7 @@ if (!$r) {
         echo "</div>\n";
      echo "</div>\n";
      echo "<hr>\n";
-   }
-?>
-   </body>
+	}
+	?>
+	</body>
 </html>
