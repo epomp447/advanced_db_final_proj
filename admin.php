@@ -2,14 +2,13 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
+require_once('./dbinfo.php');
 
-$username = "C##admin";
-$password = "4041";
-$database = "localhost/XE";
+session_start();
 
 $query = "SELECT RULE_ID, B.ATTRIBUTE_SUBNAME ANTECEDENT_REACTION, C.ATTRIBUTE_SUBNAME CONSEQUENT_REACTION,RULE_SUPPORT,RULE_CONFIDENCE FROM TABLE (DBMS_DATA_MINING.GET_ASSOCIATION_RULES('DA_ASSOC_ANLYSIS')) A, TABLE (A.ANTECEDENT) B, TABLE (A.CONSEQUENT) C";
  
-$c = oci_connect($username, $password, $database);
+$c = oci_connect(ORA_CON_UN, ORA_CON_PW, ORA_CON_DB);
 if (!$c) {
     $m = oci_error();
     trigger_error('Could not connect to database: '. $m['message'], E_USER_ERROR);
