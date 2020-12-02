@@ -89,10 +89,6 @@ if (!$r) {
        </div><hr>
       </nav>
 	  <h2 class = "title">Biography Data</h2>
-      <div class="row">
-            <a class="col-sm-6" style="text-align:center" href="ODM_data.php">Biography Data</a>
-            <a class="col-sm-6"  style="text-align:center" href="ODM_response_data.php">Response Data</a>
-      </div><br>
 	  <?php
 			echo "<table border='1'>\n";
 			$ncols = oci_num_fields($s);
