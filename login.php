@@ -24,14 +24,32 @@
      <div class="collapse navbar-collapse" id="navbarNav">
        <ul class="navbar-nav">
          <li class="nav-item active">
-           <a class="nav-link" href="index.html" target="_blank">Home</a>
+           <a class="nav-link" href="home.php">Home</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link" href="#" target="_blank">Features</a>
+           <a class="nav-link" href="ODM_data.php">Data</a>
          </li>
          <li class="nav-item">
            <a class="nav-link" href="documentation.html" target="_blank">Documentation</a>
          </li>
+       </ul>
+       <ul class="navbar-nav ml-auto">
+         <div class="dropdown">
+           <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             My Account
+           </button>
+           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+             <li class="nav-item">
+               <a class="nav-link" href="login.php">Login</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="logout.php">Logout</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="admin.php">Admin</a>
+             </li>
+           </div>
+         </div>
        </ul>
      </div><hr>
    </nav>
@@ -56,7 +74,7 @@ function login_form($message)
        <form id="form" action="login.php" method="post" class="needs-validation">
          <div class="form-group">
            <label for="email">Email Address:</label>
-           <input type="text" class="form-control" placeholder="Enter email address" name="uEmail" required>
+           <input type="email" class="form-control" placeholder="Enter email address" name="uEmail" required>
              <div class="valid-feedback">Valid.</div>
              <div class="invalid-feedback">Please fill out this field.</div>
          </div>
@@ -72,6 +90,7 @@ function login_form($message)
            </div>
          </div>
       </form>
+      <a href="register.php" style="color:black;"><br><br>Don't have an account? <b>Sign up here!</b></a>
    </div>
 </body>
 EOD;
@@ -99,7 +118,7 @@ if (!isset($_POST['uEmail']) || !isset($_POST['uPassword'])) {
     // Set the user name to be used as the client identifier in
     // future HTTP requests:
     $_SESSION['uEmail'] = $_POST['uPassword'];
-    header('Location: index.html');
+    header('Location: home.php');
   }
   else {
     // No rows matched so login failed
