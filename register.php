@@ -24,14 +24,32 @@
      <div class="collapse navbar-collapse" id="navbarNav">
        <ul class="navbar-nav">
          <li class="nav-item active">
-           <a class="nav-link" href="index.html" target="_blank">Home</a>
+           <a class="nav-link" href="home.php">Home</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link" href="#" target="_blank">Features</a>
+           <a class="nav-link" href="ODM_data.php">Data</a>
          </li>
          <li class="nav-item">
            <a class="nav-link" href="documentation.html" target="_blank">Documentation</a>
          </li>
+       </ul>
+       <ul class="navbar-nav ml-auto">
+         <div class="dropdown">
+           <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             My Account
+           </button>
+           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+             <li class="nav-item">
+               <a class="nav-link" href="login.php">Login</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="logout.php">Logout</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="admin.php">Admin</a>
+             </li>
+           </div>
+         </div>
        </ul>
      </div><hr>
    </nav>
