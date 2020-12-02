@@ -2,18 +2,21 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
-require_once('./dbinfo.php');
+require_once('dbinfo.php');
 
 session_start();
 
-$query = "SELECT RULE_ID, B.ATTRIBUTE_SUBNAME ANTECEDENT_REACTION, C.ATTRIBUTE_SUBNAME CONSEQUENT_REACTION,RULE_SUPPORT,RULE_CONFIDENCE FROM TABLE (DBMS_DATA_MINING.GET_ASSOCIATION_RULES('DA_ASSOC_ANLYSIS')) A, TABLE (A.ANTECEDENT) B, TABLE (A.CONSEQUENT) C";
- 
+$query =
+    "SELECT RULE_ID, B.ATTRIBUTE_SUBNAME ANTECEDENT_REACTION, C.ATTRIBUTE_SUBNAME CONSEQUENT_REACTION,RULE_SUPPORT,RULE_CONFIDENCE
+    FROM TABLE (DBMS_DATA_MINING.GET_ASSOCIATION_RULES('BR_ASSOC_ANALYSIS')) A, TABLE (A.ANTECEDENT) B, TABLE (A.CONSEQUENT) C
+    ORDER BY RULE_ID";
+
 $c = oci_connect(ORA_CON_UN, ORA_CON_PW, ORA_CON_DB);
 if (!$c) {
     $m = oci_error();
     trigger_error('Could not connect to database: '. $m['message'], E_USER_ERROR);
 }
- 
+
 $s = oci_parse($c, $query);
 if (!$s) {
     $m = oci_error($c);
@@ -25,7 +28,7 @@ if (!$r) {
     trigger_error('Could not execute statement: '. $m['message'], E_USER_ERROR);
 }
 
- 
+
 ?>
 
 <!DOCTYPE html>
@@ -40,45 +43,47 @@ if (!$r) {
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <img src="img/cup.png" class="logo" alt="Love Brew" width=50 height=50>
-        <a class="navbar-brand" href="index.html"><strong>Love Brew</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-           <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="documentation.html">Documentation</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <div class="dropdown">
-              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                My Account
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li class="nav-item">
-                  <a class="nav-link" href="login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="logout.php">Logout</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="admin.php">Admin</a>
-                </li>
-              </div>
-            </div>
-          </ul>
-        </div><hr>
+       <img src="img/cup.png" class="logo" alt="Love Brew" width=50 height=50>
+       <a class="navbar-brand" href="index.html"><strong>Love Brew</strong></a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="navbar-nav">
+           <li class="nav-item active">
+             <a class="nav-link" href="home.php">Home</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="ODM_data.php">Data</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="documentation.html" target="_blank">Documentation</a>
+           </li>
+         </ul>
+         <ul class="navbar-nav ml-auto">
+           <div class="dropdown">
+             <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               My Account
+             </button>
+             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+               <li class="nav-item">
+                 <a class="nav-link" href="login.php">Login</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="logout.php">Logout</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="admin.php">Admin</a>
+               </li>
+             </div>
+           </div>
+         </ul>
+       </div><hr>
       </nav>
 	  <h2 class = "title">Admin</h2>
+    
 	  <?php
+
 			echo "<table border='1'>\n";
 			$ncols = oci_num_fields($s);
 			echo "<tr>\n";
@@ -86,9 +91,9 @@ if (!$r) {
 				$colname = oci_field_name($s, $i);
 				echo "  <th><b>".htmlspecialchars($colname,ENT_QUOTES|ENT_SUBSTITUTE)."</b></th>\n";
 			}
-			echo "</tr>\n";		 
+			echo "</tr>\n";
 			while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-						
+
 				echo "<tr>\n";
 				echo "<td>". $row["RULE_ID"] . "</td>\n";
 				echo "<td>". $row["ANTECEDENT_REACTION"] . "</td>\n";
