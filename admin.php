@@ -80,25 +80,25 @@ if (!$r) {
          </ul>
        </div><hr>
       </nav>
-	  <h2 class = "title">Admin</h2>
-	      <div class="container h-100 col-sm-8">
+      <h2 class = "title">Admin</h2>
+      <div class="container h-100">
        <h5>Update ODM Settings</h5>
        <hr>
          <form id="form" action="  " method="post">
            <div class="form-group">
-             <label for="ruleLen" required>Maximum Rule Length:</label>
-             <input type="text" maxlength="3" name="ruleLen" required>
+             <label class=col-sm-3 for="ruleLen" required>Maximum Rule Length:</label>
+             <input class=col-sm-3 type="text" maxlength="3" name="ruleLen" required>
            </div>
            <div class="form-group">
-             <label for="minSup" required>Minimum Support:</label>
-             <input type="text" maxlength="3" name="minSup" required>
+             <label class=col-sm-3 for="minSup" required>Minimum Support:</label>
+             <input class=col-sm-3 type="text" maxlength="3" name="minSup" required>
            </div>
            <div class="form-group">
-             <label for="minConf" required>Minimum Confidence:</label>
-             <input type="text" maxlength="3" name="minConf" required>
+             <label class=col-sm-3 for="minConf" required>Minimum Confidence:</label>
+             <input class=col-sm-3 type="text" maxlength="3" name="minConf" required>
            </div>
            <div class="row">
-             <div class="col-md- mx-auto">
+             <div class="col-sm-8 mx-auto">
                  <button type="submit" value="Submit" class="btn btn-outline-dark">Submit</button>
              </div><br>
            </div><br>
