@@ -79,26 +79,25 @@ if (!$r) {
       </nav>
 	  <h2 class = "title">Admin</h2>
 	  <?php
-	  echo "<table border='1'>\n";
-$ncols = oci_num_fields($s);
-echo "<tr>\n";
-for ($i = 1; $i <= $ncols; ++$i) {
-    $colname = oci_field_name($s, $i);
-    echo "  <th><b>".htmlspecialchars($colname,ENT_QUOTES|ENT_SUBSTITUTE)."</b></th>\n";
-}
-echo "</tr>\n";
- 
-while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-    
-     echo "<tr>\n";
-	echo "<td>". $row["RULE_ID"] . "</td>\n";
-    echo "<td>". $row["ANTECEDENT_REACTION"] . "</td>\n";
-	echo "<td>". $row["CONSEQUENT_REACTION"] . "</td>\n";
-	echo "<td>". $row["RULE_SUPPORT"] . "</td>\n";
-	echo "<td>". $row["RULE_CONFIDENCE"] . "</td>\n";
-    echo "</tr>\n";
-}
-echo "</table>\n";
-?>
+			echo "<table border='1'>\n";
+			$ncols = oci_num_fields($s);
+			echo "<tr>\n";
+			for ($i = 1; $i <= $ncols; ++$i) {
+				$colname = oci_field_name($s, $i);
+				echo "  <th><b>".htmlspecialchars($colname,ENT_QUOTES|ENT_SUBSTITUTE)."</b></th>\n";
+			}
+			echo "</tr>\n";		 
+			while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+						
+				echo "<tr>\n";
+				echo "<td>". $row["RULE_ID"] . "</td>\n";
+				echo "<td>". $row["ANTECEDENT_REACTION"] . "</td>\n";
+				echo "<td>". $row["CONSEQUENT_REACTION"] . "</td>\n";
+				echo "<td>". $row["RULE_SUPPORT"] . "</td>\n";
+				echo "<td>". $row["RULE_CONFIDENCE"] . "</td>\n";
+				echo "</tr>\n";
+			}
+			echo "</table>\n";
+	?>
 	  </body>
 </html>
