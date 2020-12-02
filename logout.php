@@ -1,3 +1,9 @@
+<!-- Lauren Bello, Evan Pomponio
+     CSC 370 
+     December 2, 2020
+     Logout page that unsets the logged in user's session
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
