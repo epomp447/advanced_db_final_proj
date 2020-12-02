@@ -1,3 +1,8 @@
+<!-- Lauren Bello, Evan Pomponio
+     CSC 370 
+     December 2, 2020
+     Displays all of the user's information from the database. 
+--> 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
