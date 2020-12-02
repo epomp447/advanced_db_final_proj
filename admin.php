@@ -81,6 +81,29 @@ if (!$r) {
        </div><hr>
       </nav>
 	  <h2 class = "title">Admin</h2>
+	      <div class="container h-100 col-sm-8">
+       <h5>Update ODM Settings</h5>
+       <hr>
+         <form id="form" action="  " method="post">
+           <div class="form-group">
+             <label for="ruleLen" required>Maximum Rule Length:</label>
+             <input type="text" maxlength="3" name="ruleLen" required>
+           </div>
+           <div class="form-group">
+             <label for="minSup" required>Minimum Support:</label>
+             <input type="text" maxlength="3" name="minSup" required>
+           </div>
+           <div class="form-group">
+             <label for="minConf" required>Minimum Confidence:</label>
+             <input type="text" maxlength="3" name="minConf" required>
+           </div>
+           <div class="row">
+             <div class="col-md- mx-auto">
+                 <button type="submit" value="Submit" class="btn btn-outline-dark">Submit</button>
+             </div><br>
+           </div><br>
+        </form>
+     </div>
     
 	  <?php
 
