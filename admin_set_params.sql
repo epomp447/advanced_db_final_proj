@@ -5,11 +5,12 @@ Function to genereate query that updates mining settings
 @date 12/2/20
 ************************************** */
 
+
 CREATE OR REPLACE FUNCTION upd_settings(max_rule_len IN NUMBER, min_support IN NUMBER, min_confidence IN NUMBER) 
 RETURN VARCHAR2 IS
  s VARCHAR2(500);
  BEGIN
- UPDATE SETTINGS_ASSOCIATION_RULES SET SETTING_VALUE = ' ||  max_rule_len;
+ s:= 'UPDATE SETTINGS_ASSOCIATION_RULES SET SETTING_VALUE = ' ||  max_rule_len;
  s:= s || ' WHERE SETTING_NAME DBMS_DATA_MINING.ASSO_MAX_RULE_LENGTH;';
  s:= s || chr(10);
  s:= s || 'UPDATE SETTINGS_ASSOCIATION_RULES ';
@@ -24,4 +25,3 @@ RETURN VARCHAR2 IS
  s:= s || ' VALUES (DBMS_DATA_MINING.ODMS_ITEM_ID_COLUMN_NAME, "REACTION");';
  return s;
  END;
-
