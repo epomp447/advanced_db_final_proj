@@ -1,3 +1,11 @@
+<!-- Lauren Bello, Evan Pomponio
+     CSC 370 
+     December 2, 2020
+     User registration form to create an account. It checks that all fields are entered,
+     that the input types are valid and submits the form. *Disclaimer: not fully functioning 
+     with the database - bug. 
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,7 +138,7 @@ function register_form($message)
 EOD;
 }
 
-$conn = oci_connect('C##ADMIN', 'Thwnd2021!', 'localhost/XE');
+$conn = oci_connect('C##ADMIN', 'password', 'localhost/XE');
 
 $sql = "INSERT INTO Users (first_name, last_name, age, gender, location, email, pwd)
         VALUES (:fname, :lname, :age, :gender, :location, :uEmail, :uPassword)";
